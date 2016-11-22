@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -46,9 +45,14 @@ public final class ConnectionPool {
    * thread running per connection pool. The thread pool executor permits the pool itself to be
    * garbage collected.
    */
-  private static final Executor executor = new ThreadPoolExecutor(0 /* corePoolSize */,
-      Integer.MAX_VALUE /* maximumPoolSize */, 60L /* keepAliveTime */, TimeUnit.SECONDS,
-      new SynchronousQueue<Runnable>(), Util.threadFactory("OkHttp ConnectionPool", true));
+  private static final ThreadPoolExecutor executor;
+
+  static {
+    executor = new ThreadPoolExecutor(0 /* corePoolSize */,
+        Integer.MAX_VALUE /* maximumPoolSize */, 60L /* keepAliveTime */, TimeUnit.SECONDS,
+        new SynchronousQueue<Runnable>(), Util.threadFactory("OkHttp ConnectionPool", true));
+    executor.allowCoreThreadTimeOut(true);
+  }
 
   /** The maximum number of idle connections for each address. */
   private final int maxIdleConnections;

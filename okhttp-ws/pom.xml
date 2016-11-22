@@ -6,7 +6,7 @@
   <parent>
     <groupId>com.squareup.okhttp3</groupId>
     <artifactId>parent</artifactId>
-    <version>3.3.0</version>
+    <version>3.3.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>okhttp-ws</artifactId>
@@ -15,7 +15,7 @@
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>okhttp</artifactId>
+      <artifactId>okhttp-heureka</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

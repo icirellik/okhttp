@@ -11,12 +11,25 @@
 
   <groupId>com.squareup.okhttp3</groupId>
   <artifactId>parent</artifactId>
-  <version>3.3.0</version>
+  <version>3.3.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>OkHttp (Parent)</name>
   <description>An HTTP+SPDY client for Android and Java applications</description>
   <url>https://github.com/square/okhttp</url>
+
+  <distributionManagement>
+    <repository>
+      <id>central</id>
+      <name>Heureka Artifactory</name>
+      <url>https://artifactory.ci.heurekasoftware.com/artifactory/libs-release-local</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Heureka Artifactory Snapshots</name>
+      <url>https://artifactory.ci.heurekasoftware.com/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <modules>
     <module>okhttp</module>
@@ -38,6 +51,12 @@
     <module>samples</module>
     <module>benchmarks</module>
   </modules>
+
+  <scm>
+    <connection>scm:git:ssh://git@bitbucket.org/heureka-software/heureka-parent.git</connection>
+    <developerConnection>scm:git:ssh://git@bitbucket.org/heureka-software/heureka-parent.git</developerConnection>
+    <url>https://bitbucket.org/heureka-software/heureka-parent.git</url>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -62,18 +81,6 @@
     <!-- platform test mode -->
     <okhttp.platform>platform</okhttp.platform>
   </properties>
-
-  <scm>
-    <url>https://github.com/square/okhttp/</url>
-    <connection>scm:git:https://github.com/square/okhttp.git</connection>
-    <developerConnection>scm:git:git@github.com:square/okhttp.git</developerConnection>
-    <tag>parent-3.3.0</tag>
-  </scm>
-
-  <issueManagement>
-    <system>GitHub Issues</system>
-    <url>https://github.com/square/okhttp/issues</url>
-  </issueManagement>
 
   <licenses>
     <license>
